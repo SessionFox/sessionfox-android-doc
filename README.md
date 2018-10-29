@@ -21,7 +21,7 @@ allprojects{
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```java
-implementation ('com.sessionfox:sessionfox-sdk:1.0.8-alpha@aar') {
+implementation ('com.sessionfox:sessionfox-sdk:1.0.10-alpha@aar') {
   transitive = true
   }
 ```
