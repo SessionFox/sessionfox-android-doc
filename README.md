@@ -3,9 +3,8 @@ SessionFox SDK should be triggered at the beginning of application launch.
 
 ### Including library in Android project
 
-1. Create a new project in Android Studio or Open an existing application project
-
-2. In the app build.gradle, add following inside allprojects.repositories
+#### Step 1
+In the app build.gradle, add following inside allprojects.repositories
 
 ```
 allprojects{
@@ -13,34 +12,58 @@ allprojects{
         google()
         jcenter()
         maven {
-            url "https://mymavenrepo.com/repo/PENxspKoeuoFCKp9veSD/"
+            url "https://mymavenrepo.com/repo/EpCerWf2f0TbbXSSpgLb/"
         }  
     }
 }
 ```
 
-3. In the app build.gradle, add following snippet inside dependencies
+and the following snippet inside dependencies
 ```java
-implementation ('com.sessionfox:sessionfox-sdk:1.0.8-alpha@aar') {
+implementation ('com.sessionfox:sessionfox-sdk:1.1.2-alpha@aar') {
   transitive = true
-  }
+}
 ```
-    
-4. In your Android Manifest, add the following line
-```xml <meta-data android:name="SESSION_FOX_API_KEY" android:value="<your-api-key>" />```
+#### Step 2
+In your Android Manifest, add the following line
 
-Please replace  with app token obtained from support@sessionfox.com.
+```xml
+<meta-data android:name="SESSION_FOX_API_KEY" android:value="<your-api-key>" />
+```
 
-5. Extend Application class(if not already extended) and add this line to your onCreate()
+Please replace  with app token obtained from sankalp@sessionfox.com.
+
+#### Step 3
+Extend Application class(if not already extended) and add this line to your `onCreate()`
 ```java
 SessionFox.init(this);
+```
 
+Thats it! you are now ready to use sessionfox
+
+### Usage
+Available APIs
+```java
 // Tag screen name visited
 SessionFox.setScreen("com.sample.CheckoutScreen");
 
-// Send custom user meta data
-SessionFox.setUser(userHashmap);
-
 // Send custom event
-SessionFox.sendEvent("purchase",purchaseDetailsHashmap);
+SessionFox.sendEvent("purchase",purchaseDetailsHashmap
+```
+### Using Proguard with the SessionFox SDK
+If your app is proguarded, you may notice some errors at the time of making a release apk. If this happens, add the following lines to the end of your proguard-project.txt
+```
+# Class names are needed in reflection
+-keepnames class com.amazonaws.**
+-keepnames class com.amazon.**
+# Request handlers defined in request.handlers
+-keep class com.amazonaws.services.**.*Handler
+# The following are referenced but aren't required to run
+-dontwarn com.fasterxml.jackson.**
+-dontwarn org.apache.commons.logging.**
+# Android 6.0 release removes support for the Apache HTTP client
+-dontwarn org.apache.http.**
+# The SDK has several references of Apache HTTP client
+-dontwarn com.amazonaws.http.**
+-dontwarn com.amazonaws.metrics.**
 ```
