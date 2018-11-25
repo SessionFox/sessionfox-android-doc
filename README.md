@@ -48,10 +48,13 @@ Available APIs
 SessionFox.setScreen("com.sample.CheckoutScreen");
 
 // Send custom event
-SessionFox.sendEvent("purchase",purchaseDetailsHashmap
+SessionFox.sendEvent("purchase",purchaseDetailsHashmap);
+
+// To report an issue
+SessionFox.showDialog(context);
 ```
 ### Using Proguard with the SessionFox SDK
-If your app is proguarded, you may notice some errors at the time of making a release apk. If this happens, add the following lines to the end of your proguard-project.txt
+If your app is proguarded, you may notice some errors at the time of making a release apk. If this happens, add the following lines to the end of your proguard-rules.pro
 ```
 # Class names are needed in reflection
 -keepnames class com.amazonaws.**
