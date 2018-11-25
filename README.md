@@ -24,6 +24,15 @@ implementation ('com.sessionfox:sessionfox-sdk:1.1.2-alpha@aar') {
   transitive = true
 }
 ```
+The SDK needs compatibility with java 1.8, so please make sure the bellow lines are added
+```java
+android {
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+```
 #### Step 2
 In your Android Manifest, add the following line
 
