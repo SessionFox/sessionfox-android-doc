@@ -20,7 +20,7 @@ allprojects{
 
 and the following snippet inside dependencies
 ```java
-implementation ('com.sessionfox:sessionfox-sdk:1.1.3-alpha@aar') {
+implementation ('com.sessionfox:sessionfox-sdk:1.1.4-alpha@aar') {
   transitive = true
 }
 ```
@@ -59,8 +59,11 @@ SessionFox.setScreen("com.sample.CheckoutScreen");
 // Send custom event
 SessionFox.sendEvent("purchase",purchaseDetailsHashmap);
 
-// To report an issue
+// To report an issue with ui
 SessionFox.showDialog(context);
+
+// To report an issue with own ui
+SessionFox.reportIssue(<report message>, <meta data hashmap>);
 ```
 ### Using Proguard with the SessionFox SDK
 If your app is proguarded, you may notice some errors at the time of making a release apk. If this happens, add the following lines to the end of your proguard-rules.pro
