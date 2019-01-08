@@ -20,7 +20,7 @@ allprojects{
 
 and the following snippet inside dependencies
 ```java
-implementation ('com.sessionfox:sessionfox-sdk:1.2.2-alpha@aar') {
+implementation ('com.sessionfox:sessionfox-sdk:1.2.3-alpha@aar') {
   transitive = true
 }
 ```
