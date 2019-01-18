@@ -64,6 +64,9 @@ SessionFox.showDialog(context);
 
 // To report an issue with own ui
 SessionFox.reportIssue(<report message>, <meta data hashmap>);
+
+// To send custom data about the user
+SessionFox.setUser(<meda data hashmap>);
 ```
 ### Using Proguard with the SessionFox SDK
 If your app is proguarded, you may notice some errors at the time of making a release apk. If this happens, add the following lines to the end of your proguard-rules.pro
